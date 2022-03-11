@@ -47,7 +47,7 @@ module.exports = {
       },
       min_age: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       createdAt: {
         type: Sequelize.DATE,
