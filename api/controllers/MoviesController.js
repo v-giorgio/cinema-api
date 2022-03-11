@@ -1,4 +1,5 @@
 const Movie = require("../models/Movie");
+const Validations = require("../utils/Validations");
 
 class MoviesController {
   static async getAllMovies(req, res) {
@@ -25,6 +26,12 @@ class MoviesController {
 
   static async createMovie(req, res) {
     const movieData = req.body;
+
+    /* fazer as validações das regras de negócio */
+    if (Movie.validations(movieData)) {
+      return res.status(400).json(Movie.validations(movieData));
+    }
+
     try {
       const newMovie = await Movie.create(movieData);
 
@@ -37,6 +44,12 @@ class MoviesController {
   static async updateMovie(req, res) {
     const { id } = req.params;
     const movieUpdate = req.body;
+
+    /* fazer as validações das regras de negócio de acordo com os campos passados */
+    if (Movie.validationsUpdate(movieUpdate)) {
+      return res.status(400).json(Movie.validationsUpdate(movieUpdate));
+    }
+
     try {
       await Movie.update(movieUpdate, { where: { id: Number(id) } });
 
@@ -51,6 +64,7 @@ class MoviesController {
 
   static async deleteMovie(req, res) {
     const { id } = req.params;
+
     try {
       await Movie.destroy({ where: { id: Number(id) } });
       return res.status(200).json({ message: `Filme ${id} deletado` });
