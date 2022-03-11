@@ -10,7 +10,7 @@ const port = process.env.PORT;
 
 const app = express();
 
-/* definir o padrão json para as rotas */
+/* middleware: definir o padrão json para as rotas */
 app.use(express.json());
 
 /* executar o arquivo de rotas na app */
@@ -18,7 +18,11 @@ routes(app);
 
 /* servir o app */
 app.listen(port, () => {
-  console.log(`Api rodando na porta ${port}`);
+  try {
+    console.log(`Api rodando na porta ${port}`);
+  } catch (err) {
+    console.log(`Erro ao rodar a Api:\n\n ${err}`);
+  }
 });
 
 module.exports = app;
