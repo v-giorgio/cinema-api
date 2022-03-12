@@ -1,11 +1,12 @@
 const express = require("express");
-const dotenv = require("dotenv");
+require("dotenv").config({
+  path: process.env.NODE_ENV === "test" ? ".env.test" : ".env",
+});
 const routes = require("./routes");
 
 require("./database");
 
 /* definir a porta para servir o app */
-dotenv.config();
 const port = process.env.PORT;
 
 const app = express();

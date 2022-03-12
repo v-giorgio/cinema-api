@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const Validations = require("../utils/Validations");
+const Validations = require("../utils/validations/Validations");
 
 class Movie extends Model {
   static init(sequelize) {

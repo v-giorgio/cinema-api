@@ -36,7 +36,6 @@ class Validations {
     if (
       (parseInt(date[0]) === 2 || parseInt(date[0]) === 1) &&
       (parseInt(date[5]) === 0 || parseInt(date[5]) === 1) &&
-      parseInt(date[6]) <= 2 &&
       parseInt(date[8]) <= 3
     ) {
       return true;

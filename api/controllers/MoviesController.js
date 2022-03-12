@@ -1,5 +1,4 @@
 const Movie = require("../models/Movie");
-const Validations = require("../utils/Validations");
 
 class MoviesController {
   static async getAllMovies(req, res) {
