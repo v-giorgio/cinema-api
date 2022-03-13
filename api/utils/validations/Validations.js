@@ -17,6 +17,7 @@ class Validations {
       body.genre &&
       body.release_year &&
       body.duration &&
+      body.has_3d &&
       body.min_age
     ) {
       return true;
@@ -35,8 +36,10 @@ class Validations {
     /* verificar se os números da data são válidos */
     if (
       (parseInt(date[0]) === 2 || parseInt(date[0]) === 1) &&
-      (parseInt(date[5]) === 0 || parseInt(date[5]) === 1) &&
-      parseInt(date[8]) <= 3
+      parseInt(date[5] + date[6]) >= 1 &&
+      parseInt(date[5] + date[6]) <= 12 &&
+      parseInt(date[8] + date[9]) >= 1 &&
+      parseInt(date[8] + date[9]) <= 31
     ) {
       return true;
     }
@@ -46,10 +49,18 @@ class Validations {
   /* verificar se os campos numéricos são do tipo number */
   static validateNumber(numbers) {
     if (
-      typeof numbers.rating_avg === "number" &&
       typeof numbers.duration === "number" &&
       typeof numbers.min_age === "number"
     ) {
+      /* o atributo rating_avg não é obrigatório */
+      if (numbers.rating_avg) {
+        if (typeof numbers.rating_avg === "number") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
       return true;
     }
 

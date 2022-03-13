@@ -9,7 +9,7 @@
     "seed": "npx sequelize-cli db:seed:all",
     "start": "nodemon index.js --ignore __tests__",
     "pretest": "cross-env NODE_ENV=test npx sequelize-cli db:migrate",
-    "test": "cross-env NODE_ENV=test jest",
+    "test": "cross-env NODE_ENV=test jest --forceExit",
     "posttest": "cross-env NODE_ENV=test npx sequelize-cli db:migrate:undo:all"
   },
   "author": "v-giorgio",

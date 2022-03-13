@@ -106,11 +106,15 @@ class Movie extends Model {
     }
 
     /* verificar quantidade de dígitos nos campos duration e min_age se houver */
-    if (movieDataUpdate.duration || movieDataUpdate.min_age) {
-      if (
-        !Validations.validateLength(movieDataUpdate.min_age) ||
-        !Validations.validateLength(movieDataUpdate.duration)
-      ) {
+    if (movieDataUpdate.duration) {
+      if (!Validations.validateLength(movieDataUpdate.duration)) {
+        return {
+          message: `Os campos 'min_age' e 'duration' devem conter entre 1 e 3 dígitos.`,
+        };
+      }
+    }
+    if (movieDataUpdate.min_age) {
+      if (!Validations.validateLength(movieDataUpdate.min_age)) {
         return {
           message: `Os campos 'min_age' e 'duration' devem conter entre 1 e 3 dígitos.`,
         };
@@ -118,11 +122,15 @@ class Movie extends Model {
     }
 
     /* verificar textos pequenos se houver */
-    if (movieDataUpdate.language || movieDataUpdate.genre) {
-      if (
-        !Validations.validateShortString(movieDataUpdate.language) ||
-        !Validations.validateShortString(movieDataUpdate.genre)
-      ) {
+    if (movieDataUpdate.language) {
+      if (!Validations.validateShortString(movieDataUpdate.language)) {
+        return {
+          message: `Os campos 'language' e 'genre' devem conter até 30 caracteres`,
+        };
+      }
+    }
+    if (movieDataUpdate.genre) {
+      if (!Validations.validateShortString(movieDataUpdate.genre)) {
         return {
           message: `Os campos 'language' e 'genre' devem conter até 30 caracteres`,
         };
