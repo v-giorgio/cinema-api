@@ -39,7 +39,17 @@ class Movie extends Model {
     }
 
     /* verificar se os campos numéricos estão preenchidos corretamente */
-    if (!Validations.validateNumber(movieData)) {
+    if (movieData.rating_avg) {
+      if (!Validations.validateNumber(movieData.rating_avg)) {
+        return {
+          message: `Os campos numéricos não devem ser preenchidos com texto`,
+        };
+      }
+    }
+    if (
+      !Validations.validateNumber(movieData.duration) ||
+      !Validations.validateNumber(movieData.min_age)
+    ) {
       return {
         message: `Os campos numéricos não devem ser preenchidos com texto`,
       };
@@ -87,21 +97,21 @@ class Movie extends Model {
     if (movieDataUpdate.rating_avg) {
       if (!Validations.validateNumber(movieDataUpdate.rating_avg)) {
         return {
-          message: `Os campos numéricos não devem ser preenchidos com texto.`,
+          message: `Os campos numéricos não devem ser preenchidos com texto`,
         };
       }
     }
     if (movieDataUpdate.duration) {
       if (!Validations.validateNumber(movieDataUpdate.duration)) {
         return {
-          message: `Os campos numéricos não devem ser preenchidos com texto.`,
+          message: `Os campos numéricos não devem ser preenchidos com texto`,
         };
       }
     }
     if (movieDataUpdate.min_age) {
       if (!Validations.validateNumber(movieDataUpdate.min_age)) {
         return {
-          message: `Os campos numéricos não devem ser preenchidos com texto.`,
+          message: `Os campos numéricos não devem ser preenchidos com texto`,
         };
       }
     }
