@@ -84,14 +84,24 @@ class Movie extends Model {
     }
 
     /* verificar numbers se houver */
-    if (
-      movieDataUpdate.rating_avg ||
-      movieDataUpdate.duration ||
-      movieDataUpdate.min_age
-    ) {
-      if (!Validations.validateNumber(movieDataUpdate)) {
+    if (movieDataUpdate.rating_avg) {
+      if (!Validations.validateNumber(movieDataUpdate.rating_avg)) {
         return {
-          message: `Os campos numéricos não devem ser preenchidos com texto`,
+          message: `Os campos numéricos não devem ser preenchidos com texto.`,
+        };
+      }
+    }
+    if (movieDataUpdate.duration) {
+      if (!Validations.validateNumber(movieDataUpdate.duration)) {
+        return {
+          message: `Os campos numéricos não devem ser preenchidos com texto.`,
+        };
+      }
+    }
+    if (movieDataUpdate.min_age) {
+      if (!Validations.validateNumber(movieDataUpdate.min_age)) {
+        return {
+          message: `Os campos numéricos não devem ser preenchidos com texto.`,
         };
       }
     }

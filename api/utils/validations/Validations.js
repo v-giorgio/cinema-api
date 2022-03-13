@@ -47,24 +47,12 @@ class Validations {
   }
 
   /* verificar se os campos numéricos são do tipo number */
-  static validateNumber(numbers) {
-    if (
-      typeof numbers.duration === "number" &&
-      typeof numbers.min_age === "number"
-    ) {
-      /* o atributo rating_avg não é obrigatório */
-      if (numbers.rating_avg) {
-        if (typeof numbers.rating_avg === "number") {
-          return true;
-        } else {
-          return false;
-        }
-      }
-
+  static validateNumber(number) {
+    if (typeof number == "number") {
       return true;
+    } else {
+      return false;
     }
-
-    return false;
   }
 
   /* verificar se é do tipo boolean */
