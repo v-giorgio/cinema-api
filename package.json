@@ -4,10 +4,11 @@
   "description": "Projeto de Final de módulo da Resilia - construção de uma API Rest",
   "main": "./api/index.js",
   "scripts": {
+    "start": "node ./api/index.js --ignore __tests__",
     "database": "npx sequelize-cli db:create",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all",
-    "start": "nodemon index.js --ignore __tests__",
+    "dev": "nodemon index.js --ignore __tests__",
     "pretest": "cross-env NODE_ENV=test npx sequelize-cli db:migrate",
     "test": "cross-env NODE_ENV=test jest --forceExit",
     "posttest": "cross-env NODE_ENV=test npx sequelize-cli db:migrate:undo:all"
@@ -15,6 +16,7 @@
   "author": "v-giorgio",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mysql2": "^2.3.3",
