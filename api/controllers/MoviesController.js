@@ -27,9 +27,9 @@ class MoviesController {
     const movieData = req.body;
 
     /* fazer as validações das regras de negócio */
-    if (Movie.validations(movieData)) {
+    /* if (Movie.validations(movieData)) {
       return res.status(400).json(Movie.validations(movieData));
-    }
+    } */
 
     try {
       const newMovie = await Movie.create(movieData);
