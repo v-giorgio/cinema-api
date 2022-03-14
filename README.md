@@ -203,49 +203,152 @@ Na pasta `collections` deste repositório, você encontra um [arquivo .json](htt
 #### 🪧 `/movies`
 
 Rota para <b>encontrar</b> todos os filmes.<br>
-Método: `GET`
+Método: `GET`<br>
+
+Resposta:
+
+```
+[
+	{
+		"id": 4,
+		"title": "Filme teste atualizado",
+		"director": "teste",
+		"language": "teste",
+		"genre": "test",
+		"release_year": "2020-12-12",
+		"rating_avg": 20,
+		"description": null,
+		"duration": 100,
+		"has_3d": true,
+		"min_age": 10,
+		"createdAt": "2022-03-13T19:08:13.000Z",
+		"updatedAt": "2022-03-14T18:43:16.000Z"
+	},
+	{
+		"id": 14,
+		"title": "Filme Teste",
+		"director": "Diretor Teste",
+		"language": "Linguagem Teste",
+		"genre": "Gênero Teste",
+		"release_year": "2012-12-12",
+		"rating_avg": 12,
+		"description": "Descrição Teste",
+		"duration": 12,
+		"has_3d": true,
+		"min_age": 12,
+		"createdAt": "2022-03-14T18:36:36.000Z",
+		"updatedAt": "2022-03-14T18:36:36.000Z"
+	}
+]
+```
 
 #### 🪧 `/movies/:id`
 
 Rota para <b>encontrar</b> um filme pelo id.<br>
 Método: `GET`<br>
-Informe o <b>id</b> do filme que deseja encontrar na rota
+Informe o <b>id</b> do filme que deseja encontrar na rota<br>
+
+Resposta:<br>
+
+`/movies/44`
+
+```
+[
+	{
+		"id": 44,
+		"title": "teste atualizado",
+		"director": "Diretor Teste",
+		"language": "Linguagem Teste",
+		"genre": "Gênero Teste",
+		"release_year": "2012-12-12",
+		"rating_avg": 12,
+		"description": "Descrição Teste",
+		"duration": 12,
+		"has_3d": true,
+		"min_age": 12,
+		"createdAt": "2022-03-14T19:01:10.000Z",
+		"updatedAt": "2022-03-14T19:15:40.000Z"
+	}
+]
+```
 
 #### 🪧 `/movies`
 
 Rota para <b>adicionar</b> um filme.<br>
 Método: `POST`<br>
 Template para enviar os dados:
-<br>
 
 ```
 {
-	"title": "Insira o nome do filme aqui",
-	"director": "Insira o nome do(a) diretor(a) aqui",
-	"language": "Insira a língua do filme aqui",
-	"genre": "Insira o gênero do filme aqui",
-	"release_year": "Insira a data de publicação do filme aqui",
-	"rating_avg": Insira a avaliação aqui (número),
-	"description": "Insira a descrição aqui",
-	"duration": Insira a duração do filme (em minutos) aqui (número),
-	"has_3d": Insira aqui se o filme possui 3D ou não (true - Possui | false - Não possui),
-	"min_age": Insira a idade mínima para assistir ao filme aqui (número)
+	"title": "Filme teste",
+	"director": "teste",
+	"language": "teste",
+	"genre": "test",
+	"release_year": "2020-12-12",
+	"rating_avg": 20,
+	"description": null,
+	"duration": 100,
+	"has_3d": true,
+	"min_age": 10,
+}
+```
+
+<br>
+Resposta:
+
+```
+{
+	"id": 4,
+	"title": "Filme teste",
+	"director": "teste",
+	"language": "teste",
+	"genre": "test",
+	"release_year": "2020-12-12",
+	"rating_avg": 20,
+	"description": null,
+	"duration": 100,
+	"has_3d": true,
+	"min_age": 10,
+	"createdAt": "2022-03-13T19:08:13.000Z",
+	"updatedAt": "2022-03-14T18:43:16.000Z"
 }
 ```
 
 #### 🪧 `/movies/:id`
 
 Rota para <b>atualizar</b> um filme pelo id.<br>
-Método: `PUT`
-
-<br>
+Método: `PUT`<br>
+Template para enviar os dados:
 
 ```
 {
-	"title": "Insira o nome do filme ATUALIZADO aqui"
+	"title": "Filme teste atualizado"
 
     // informe na rota o Id do filme que deseja alterar
     // você pode alterar outros campos além do `title`
+}
+```
+
+<br>
+Resposta:<br>
+
+`/movies/4`
+
+```
+{
+	"id": 4,
+	"title": "Filme teste atualizado",
+	"director": "teste",
+	"language": "teste",
+	"genre": "test",
+	"release_year": "2020-12-12",
+	"rating_avg": 20,
+	"description": null,
+	"duration": 100,
+	"has_3d": true,
+	"min_age": 10,
+	"createdAt": "2022-03-13T19:08:13.000Z",
+	"updatedAt": "2022-03-14T18:43:16.000Z"
 }
 ```
 
@@ -254,6 +357,16 @@ Método: `PUT`
 Rota para <b>deletar</b> um filme pelo id.<br>
 Método: `DELETE`<br>
 Informe o <b>id</b> do filme que deseja deletar na rota<br>
+
+Resposta:<br>
+
+`movies/34`
+
+```
+{
+	"message": "Filme 34 deletado"
+}
+```
 
 <br>
 

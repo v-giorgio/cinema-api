@@ -1,7 +1,6 @@
 /** Regras de negócio:
  *  - Não aceitar requisição post sem dados
  *  - Não aceitar formato da data inválido
- *  - Não aceitar formato string para campos numéricos
  *  - Não aceitar diferentes campos em campos do tipo boolean
  *  - Não aceitar idade, nem duração, com mais de 3 dígitos
  *  - Não aceitar mais de 30 caracteres em textos pequenos (linguagem, gênero)
