@@ -45,15 +45,6 @@ class Validations {
     return false;
   }
 
-  /* verificar se os campos numéricos são do tipo number */
-  static validateNumber(number) {
-    if (typeof number === "number") {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   /* verificar se é do tipo boolean */
   static validateBool(booleanItem) {
     return typeof booleanItem === "boolean";
