@@ -207,24 +207,6 @@ describe("Validações da model Movies na rota de Create", () => {
     expect(response4.status).toBe(400);
   });
 
-  it("Não aceitará string em campos numéricos", async () => {
-    const newMovie = {
-      title: "Filme validado",
-      director: "Diretor validado",
-      language: "Linguagem validado",
-      genre: "Gênero validado",
-      release_year: "2020-12-12",
-      duration: "122",
-      rating_avg: "80",
-      has_3d: true,
-      min_age: "12",
-    };
-
-    const response = await request(app).post("/movies").send(newMovie);
-
-    expect(response.status).toBe(400);
-  });
-
   it("O campo has_3d deve ser apenas do tipo booleano", async () => {
     const newMovie = {
       title: "Filme validado",
@@ -330,26 +312,6 @@ describe("Validações da model Movies na rota de Update", () => {
     expect(response2.status).toBe(400);
     expect(response3.status).toBe(400);
     expect(response4.status).toBe(400);
-  });
-
-  it("Não aceitará string em campos numéricos", async () => {
-    const newMovie1 = {
-      duration: "122",
-    };
-    const newMovie2 = {
-      rating_avg: "80",
-    };
-    const newMovie3 = {
-      min_age: "12",
-    };
-
-    const response = await request(app).put("/movies/1").send(newMovie1);
-    const response2 = await request(app).put("/movies/1").send(newMovie2);
-    const response3 = await request(app).put("/movies/1").send(newMovie3);
-
-    expect(response.status).toBe(400);
-    expect(response2.status).toBe(400);
-    expect(response3.status).toBe(400);
   });
 
   it("O campo has_3d deve ser apenas do tipo booleano", async () => {
