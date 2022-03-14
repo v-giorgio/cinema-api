@@ -109,7 +109,7 @@ class Movie extends Model {
       }
     }
     if (movieDataUpdate.min_age) {
-      if (!Validations.validateNumber(movieDataUpdate.min_age)) {
+      if (!Validations.validateNumber(parseInt(movieDataUpdate.min_age))) {
         return {
           message: `Os campos numéricos não devem ser preenchidos com texto`,
         };
