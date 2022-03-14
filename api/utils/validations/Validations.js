@@ -48,7 +48,7 @@ class Validations {
 
   /* verificar se os campos numéricos são do tipo number */
   static validateNumber(number) {
-    if (typeof number == "number") {
+    if (typeof number === "number") {
       return true;
     } else {
       return false;
