@@ -34,7 +34,7 @@ class MoviesController {
     try {
       const newMovie = await Movie.create(movieData);
 
-      return res.status(200).json(newMovie);
+      return res.status(201).json(newMovie);
     } catch (error) {
       return res.status(500).json(error.message);
     }
@@ -66,7 +66,7 @@ class MoviesController {
 
     try {
       await Movie.destroy({ where: { id: Number(id) } });
-      return res.status(200).json({ message: `Filme ${id} deletado` });
+      return res.status(204).json({ message: `Filme ${id} deletado` });
     } catch (error) {
       return res.status(500).json(error.message);
     }
