@@ -31,6 +31,17 @@ class MoviesController {
       return res.status(400).json(Movie.validations(movieData));
     }
 
+    /* verificar se filme já existe no banco */
+    if (
+      await Movie.findOne({
+        where: { title: movieData.title },
+      })
+    ) {
+      return res
+        .status(409)
+        .json({ message: `O filme ${movieData.title} já foi cadastrado.` });
+    }
+
     try {
       const newMovie = await Movie.create(movieData);
 

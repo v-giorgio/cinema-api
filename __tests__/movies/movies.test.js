@@ -4,6 +4,7 @@ const app = require("../../api/index");
 /** - Rotas da model Movies -
  * Criar um filme
  * Criar vários filmes
+ * Não criar um filme já existente
  * Pegar todos os filmes
  * Pegar um filme por id
  * Atualizar um filme por id
@@ -26,7 +27,7 @@ describe("Rotas da model Movies", () => {
 
     const response = await request(app).post("/movies").send(newMovie);
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(201);
 
     expect(response.body.title).toBe("Filme teste");
   });
@@ -73,13 +74,32 @@ describe("Rotas da model Movies", () => {
     const response3 = await request(app).post("/movies").send(newMovie3);
     const response4 = await request(app).post("/movies").send(newMovie4);
 
-    expect(response2.status).toBe(200);
-    expect(response3.status).toBe(200);
-    expect(response4.status).toBe(200);
+    expect(response2.status).toBe(201);
+    expect(response3.status).toBe(201);
+    expect(response4.status).toBe(201);
 
     expect(response2.body.title).toBe("Filme teste2");
     expect(response3.body.title).toBe("Filme teste3");
     expect(response4.body.title).toBe("Filme teste4");
+  });
+
+  it("Não deverá criar um filme já existente no banco", async () => {
+    const newMovie = {
+      title: "Filme teste",
+      director: "Diretor teste",
+      language: "Linguagem teste",
+      genre: "Gênero teste",
+      release_year: "2020-12-12",
+      rating_avg: 12,
+      description: "Descrição teste",
+      duration: 12,
+      has_3d: true,
+      min_age: 12,
+    };
+
+    const response = await request(app).post("/movies").send(newMovie);
+
+    expect(response.status).toBe(409);
   });
 
   it("Deve conseguir retornar todos os filmes inseridos", async () => {
@@ -116,7 +136,7 @@ describe("Rotas da model Movies", () => {
   it("Deve conseguir deletar um filme pelo id", async () => {
     const response = await request(app).delete("/movies/4").send();
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(204);
 
     expect(response.body.title).toBe(undefined);
   });
@@ -160,7 +180,7 @@ describe("Validações da model Movies na rota de Create", () => {
   it("Poderá criar um filme mesmo faltando atributos, desde que não sejam obrigatórios", async () => {
     /* faltando os atributos 'rating_avg' e 'description' que NÃO são obrigatórios */
     const newMovie = {
-      title: "Filme validado",
+      title: "Novo Filme validado",
       director: "Diretor validado",
       language: "Linguagem validado",
       genre: "Gênero validado",
@@ -172,7 +192,7 @@ describe("Validações da model Movies na rota de Create", () => {
 
     const response = await request(app).post("/movies").send(newMovie);
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(201);
   });
 
   it("Não aceitará data em um formato inválido", async () => {
