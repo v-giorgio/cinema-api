@@ -129,7 +129,7 @@ DB_DIALECT=mysql
 DB_USERNAME=root
 DB_PASSWORD=
 DB_HOST=localhost
-DB_PORT=
+DB_PORT=3306
 DB_DATABASE=cinema
 ```
 
