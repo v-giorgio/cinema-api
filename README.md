@@ -190,7 +190,7 @@ https://cinema-api-resilia.herokuapp.com/
 
 <br>
 
-Na pasta `collections` deste repositório, você encontra um [arquivo .json](https://github.com/v-giorgio/cinema-api/tree/develop/collections) com requisições suportadas pela API para testar no [Postman](https://www.postman.com/) ou no [Insomnia](https://insomnia.rest/download).
+Na pasta `collections` deste repositório, você encontra um [arquivo](https://github.com/v-giorgio/cinema-api/tree/main/collections) com requisições suportadas pela API para testar no [Postman](https://www.postman.com/) ou no [Insomnia](https://insomnia.rest/download).
 
 <br>
 
