@@ -170,7 +170,7 @@ npm run seed
 #### 9️⃣ Execute a aplicação
 
 ```
-npm run dev
+npm start
 ```
 
 <br>
