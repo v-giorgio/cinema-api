@@ -13,7 +13,7 @@ class Movie extends Model {
         rating_avg: DataTypes.FLOAT,
         description: DataTypes.TEXT,
         duration: DataTypes.INTEGER,
-        has_3d: DataTypes.BOOLEAN,
+        poster_url: DataTypes.STRING,
         min_age: DataTypes.INTEGER,
       },
       {
@@ -35,13 +35,6 @@ class Movie extends Model {
     if (!Validations.validateDate(movieData.release_year)) {
       return {
         message: `A data ${movieData.release_year} é inválida.`,
-      };
-    }
-
-    /* verificar se o campo 'has_3d' é do tipo boolean */
-    if (!Validations.validateBool(movieData.has_3d)) {
-      return {
-        message: `O campo 'has_3d' deve ser do tipo boolean.`,
       };
     }
 
@@ -72,15 +65,6 @@ class Movie extends Model {
       if (!Validations.validateDate(movieDataUpdate.release_year)) {
         return {
           message: `A data ${movieDataUpdate.release_year} é inválida.`,
-        };
-      }
-    }
-
-    /* verificar has_3d se houver */
-    if (movieDataUpdate.has_3d) {
-      if (!Validations.validateBool(movieDataUpdate.has_3d)) {
-        return {
-          message: `O campo 'has_3d' deve ser do tipo boolean.`,
         };
       }
     }

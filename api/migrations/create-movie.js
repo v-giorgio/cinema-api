@@ -41,8 +41,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      has_3d: {
-        type: Sequelize.BOOLEAN,
+      poster_url: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       min_age: {

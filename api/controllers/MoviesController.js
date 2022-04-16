@@ -23,6 +23,20 @@ class MoviesController {
     }
   }
 
+  static async getOneMovieByTitle(req, res) {
+    const { title } = req.body;
+
+    try {
+      const movie = await Movie.findOne({
+        where: { title: title },
+      });
+
+      return res.status(200).json(movie);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
   static async createMovie(req, res) {
     const movieData = req.body;
 

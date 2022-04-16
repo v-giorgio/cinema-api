@@ -16,7 +16,7 @@ class Validations {
       body.genre &&
       body.release_year &&
       body.duration &&
-      body.has_3d &&
+      body.poster_url &&
       body.min_age
     ) {
       return true;
@@ -43,11 +43,6 @@ class Validations {
       return true;
     }
     return false;
-  }
-
-  /* verificar se é do tipo boolean */
-  static validateBool(booleanItem) {
-    return typeof booleanItem === "boolean";
   }
 
   /* verificar se idade e a duração têm entre 1 e 3 dígitos */

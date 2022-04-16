@@ -21,7 +21,7 @@ describe("Rotas da model Movies", () => {
       rating_avg: 12,
       description: "Descrição teste",
       duration: 12,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
 
@@ -42,7 +42,7 @@ describe("Rotas da model Movies", () => {
       rating_avg: 12,
       description: "Descrição teste2",
       duration: 12,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
     const newMovie3 = {
@@ -54,7 +54,7 @@ describe("Rotas da model Movies", () => {
       rating_avg: 12,
       description: "Descrição teste3",
       duration: 12,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
     const newMovie4 = {
@@ -66,7 +66,7 @@ describe("Rotas da model Movies", () => {
       rating_avg: 12,
       description: "Descrição teste4",
       duration: 12,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
 
@@ -93,7 +93,7 @@ describe("Rotas da model Movies", () => {
       rating_avg: 12,
       description: "Descrição teste",
       duration: 12,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
 
@@ -153,7 +153,6 @@ describe("Rotas da model Movies", () => {
  * Campos não-obrigatórios
  * Data no formato inválido
  * String em campos numéricos
- * Campo booleano
  * Quantidade de dígitos em campos numéricos
  * Tamanho do texto em campos pequenos
  */
@@ -168,7 +167,7 @@ describe("Validações da model Movies na rota de Create", () => {
       release_year: "2020-12-12",
       rating_avg: 12,
       description: "Descrição validado",
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
 
@@ -186,7 +185,7 @@ describe("Validações da model Movies na rota de Create", () => {
       genre: "Gênero validado",
       release_year: "2020-12-12",
       duration: 122,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
 
@@ -203,7 +202,7 @@ describe("Validações da model Movies na rota de Create", () => {
       genre: "Gênero validado",
       release_year: "",
       duration: 122,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
 
@@ -227,38 +226,6 @@ describe("Validações da model Movies na rota de Create", () => {
     expect(response4.status).toBe(400);
   });
 
-  it("O campo has_3d deve ser apenas do tipo booleano", async () => {
-    const newMovie = {
-      title: "Filme validado",
-      director: "Diretor validado",
-      language: "Linguagem validado",
-      genre: "Gênero validado",
-      release_year: "2020-12-12",
-      duration: 122,
-      rating_avg: 80,
-      has_3d: "true",
-      min_age: 12,
-    };
-
-    const newMovie2 = {
-      title: "Filme validado",
-      director: "Diretor validado",
-      language: "Linguagem validado",
-      genre: "Gênero validado",
-      release_year: "2020-12-12",
-      duration: 122,
-      rating_avg: 80,
-      has_3d: 10,
-      min_age: 12,
-    };
-
-    const response = await request(app).post("/movies").send(newMovie);
-    const response2 = await request(app).post("/movies").send(newMovie2);
-
-    expect(response.status).toBe(400);
-    expect(response2.status).toBe(400);
-  });
-
   it("Os campos de min_age e duration devem ter entre 1 e 3 dígitos", async () => {
     const newMovie = {
       title: "Filme validado",
@@ -268,7 +235,7 @@ describe("Validações da model Movies na rota de Create", () => {
       release_year: "2020-12-12",
       duration: 1212,
       rating_avg: 80,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 1212,
     };
 
@@ -291,7 +258,7 @@ describe("Validações da model Movies na rota de Create", () => {
       release_year: "2020-12-12",
       duration: 12,
       rating_avg: 80,
-      has_3d: true,
+      poster_url: "htttps://teste.com/test.jpg",
       min_age: 12,
     };
 
@@ -304,7 +271,6 @@ describe("Validações da model Movies na rota de Create", () => {
 /** - Validações da model movies na rota de Update -
  * Data no formato inválido
  * String em campos numéricos
- * Campo booleano
  * Quantidade de dígitos em campos numéricos
  * Tamanho do texto em campos pequenos
  */
@@ -332,22 +298,6 @@ describe("Validações da model Movies na rota de Update", () => {
     expect(response2.status).toBe(400);
     expect(response3.status).toBe(400);
     expect(response4.status).toBe(400);
-  });
-
-  it("O campo has_3d deve ser apenas do tipo booleano", async () => {
-    const newMovie = {
-      has_3d: "true",
-    };
-
-    const newMovie2 = {
-      has_3d: 10,
-    };
-
-    const response = await request(app).put("/movies/1").send(newMovie);
-    const response2 = await request(app).put("/movies/1").send(newMovie2);
-
-    expect(response.status).toBe(400);
-    expect(response2.status).toBe(400);
   });
 
   it("Os campos de min_age e duration devem ter entre 1 e 3 dígitos", async () => {
