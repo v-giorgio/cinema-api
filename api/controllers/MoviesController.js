@@ -26,6 +26,8 @@ class MoviesController {
   static async getOneMovieByTitle(req, res) {
     const { title } = req.body;
 
+    console.log(req.body);
+
     try {
       const movie = await Movie.findOne({
         where: { title: title },
