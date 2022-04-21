@@ -9,12 +9,12 @@ class Movie extends Model {
         director: DataTypes.STRING,
         language: DataTypes.STRING,
         genre: DataTypes.STRING,
-        release_year: DataTypes.DATEONLY,
+        release_year: DataTypes.STRING,
         rating_avg: DataTypes.FLOAT,
         description: DataTypes.TEXT,
         duration: DataTypes.INTEGER,
         poster_url: DataTypes.STRING,
-        min_age: DataTypes.INTEGER,
+        min_age: DataTypes.STRING,
       },
       {
         sequelize,
@@ -39,12 +39,9 @@ class Movie extends Model {
     }
 
     /* verificar se a idade e a duração possuem até 3 dígitos */
-    if (
-      !Validations.validateLength(movieData.min_age) ||
-      !Validations.validateLength(movieData.duration)
-    ) {
+    if (!Validations.validateLength(movieData.duration)) {
       return {
-        message: `Os campos 'min_age' e 'duration' devem conter entre 1 e 3 dígitos.`,
+        message: `O campo 'duration' deve conter entre 1 e 3 dígitos.`,
       };
     }
 
@@ -73,14 +70,7 @@ class Movie extends Model {
     if (movieDataUpdate.duration) {
       if (!Validations.validateLength(movieDataUpdate.duration)) {
         return {
-          message: `Os campos 'min_age' e 'duration' devem conter entre 1 e 3 dígitos.`,
-        };
-      }
-    }
-    if (movieDataUpdate.min_age) {
-      if (!Validations.validateLength(movieDataUpdate.min_age)) {
-        return {
-          message: `Os campos 'min_age' e 'duration' devem conter entre 1 e 3 dígitos.`,
+          message: `O campo 'duration' deve conter entre 1 e 3 dígitos.`,
         };
       }
     }

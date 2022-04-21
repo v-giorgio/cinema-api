@@ -25,24 +25,9 @@ class Validations {
     }
   }
 
-  /* checar se está no formato de data */
+  /* checar se está no formato de data - TO DO (change implementation) */
   static validateDate(date) {
-    let regex = /^\d{4}-\d{2}-\d{2}$/;
-    /* verificar se está no formato certo */
-    if (!date.match(regex)) {
-      return false;
-    }
-    /* verificar se os números da data são válidos */
-    if (
-      (parseInt(date[0]) === 2 || parseInt(date[0]) === 1) &&
-      parseInt(date[5] + date[6]) >= 1 &&
-      parseInt(date[5] + date[6]) <= 12 &&
-      parseInt(date[8] + date[9]) >= 1 &&
-      parseInt(date[8] + date[9]) <= 31
-    ) {
-      return true;
-    }
-    return false;
+    return true;
   }
 
   /* verificar se idade e a duração têm entre 1 e 3 dígitos */

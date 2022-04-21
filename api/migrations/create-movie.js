@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false,
       },
       release_year: {
-        type: Sequelize.DATEONLY,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       rating_avg: {
@@ -46,7 +46,7 @@ module.exports = {
         allowNull: false,
       },
       min_age: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       createdAt: {
